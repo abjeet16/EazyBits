@@ -37,31 +37,21 @@ public class DemoSecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 // Admin access to all endpoints
-                                .requestMatchers(HttpMethod.GET, "/api/employees/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.POST, "/api/employees").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.PUT, "/api/employees/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.GET, "/api/members/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.POST, "/api/members").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.PUT, "/api/members/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.DELETE, "/api/members/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.GET, "/api/roles/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.POST, "/api/roles").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.PUT, "/api/roles/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/api/employees/**").hasAnyRole("ADMIN","MANAGER","EMPLOYEE")
+                                .requestMatchers(HttpMethod.GET, "/api/roles/**").hasAnyRole("ADMIN","MANAGER","EMPLOYEE")
+                                .requestMatchers(HttpMethod.GET, "/api/members/**").hasAnyRole("ADMIN","MANAGER","EMPLOYEE")
+
+                                .requestMatchers(HttpMethod.PUT, "/api/employees/**").hasAnyRole("ADMIN","MANAGER")
+                                .requestMatchers(HttpMethod.PUT, "/api/members/**").hasAnyRole("ADMIN","MANAGER")
+                                .requestMatchers(HttpMethod.PUT, "/api/roles/**").hasAnyRole("ADMIN","MANAGER")
+
+                                .requestMatchers(HttpMethod.POST, "/api/employees").hasAnyRole("ADMIN","MANAGER")
+                                .requestMatchers(HttpMethod.POST, "/api/roles").hasAnyRole("ADMIN","MANAGER")
+                                .requestMatchers(HttpMethod.POST, "/api/members").hasAnyRole("ADMIN","MANAGER")
+
                                 .requestMatchers(HttpMethod.DELETE, "/api/roles/**").hasRole("ADMIN")
-
-                                // Manager access to certain endpoints
-                                .requestMatchers(HttpMethod.GET, "/api/employees/**").hasRole("MANAGER")
-                                .requestMatchers(HttpMethod.POST, "/api/employees").hasRole("MANAGER")
-                                .requestMatchers(HttpMethod.GET, "/api/members/**").hasRole("MANAGER")
-                                .requestMatchers(HttpMethod.POST, "/api/members").hasRole("MANAGER")
-                                .requestMatchers(HttpMethod.GET, "/api/roles/**").hasRole("MANAGER")
-                                .requestMatchers(HttpMethod.POST, "/api/roles").hasRole("MANAGER")
-
-                                // Employee access to view endpoints only
-                                .requestMatchers(HttpMethod.GET, "/api/employees/**").hasRole("EMPLOYEE")
-                                .requestMatchers(HttpMethod.GET, "/api/members/**").hasRole("EMPLOYEE")
-                                .requestMatchers(HttpMethod.GET, "/api/roles/**").hasRole("EMPLOYEE")
+                                .requestMatchers(HttpMethod.DELETE, "/api/members/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
                 )
                 .httpBasic(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable());
