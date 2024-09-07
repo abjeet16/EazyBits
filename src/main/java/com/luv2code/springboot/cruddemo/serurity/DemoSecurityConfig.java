@@ -40,6 +40,7 @@ public class DemoSecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/api/employees/**").hasAnyRole("ADMIN","MANAGER","EMPLOYEE")
                                 .requestMatchers(HttpMethod.GET, "/api/roles/**").hasAnyRole("ADMIN","MANAGER","EMPLOYEE")
                                 .requestMatchers(HttpMethod.GET, "/api/members/**").hasAnyRole("ADMIN","MANAGER","EMPLOYEE")
+                                .requestMatchers(HttpMethod.GET, "/api/deals/**").hasAnyRole("ADMIN","MANAGER","EMPLOYEE")
 
                                 .requestMatchers(HttpMethod.PUT, "/api/employees/**").hasAnyRole("ADMIN","MANAGER")
                                 .requestMatchers(HttpMethod.PUT, "/api/members/**").hasAnyRole("ADMIN","MANAGER")
@@ -52,6 +53,7 @@ public class DemoSecurityConfig {
                                 .requestMatchers(HttpMethod.DELETE, "/api/roles/**").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/api/members/**").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
+                                .anyRequest().permitAll()
                 )
                 .httpBasic(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable());
