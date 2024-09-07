@@ -28,5 +28,29 @@ public class ProposedDeal {
     }
 
     // Getters and setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Deal getDeal() {
+        return deal;
+    }
+
+    public void setDeal(Deal deal) {
+        this.deal = deal;
+    }
+
+    public LocalDateTime getProposedTime() {
+        return proposedTime;
+    }
+
+    public void setProposedTime(LocalDateTime proposedTime) {
+        this.proposedTime = proposedTime;
+    }
 }
 

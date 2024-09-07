@@ -11,13 +11,13 @@ public class DealInProcessDTO {
     private double askingAmount;
     private double offeredAmount;
     private String stage;
-    private Long employeeId;
+    private String employeeId;
 
     // Constructors
     public DealInProcessDTO() {
     }
 
-    public DealInProcessDTO(Long dealId, String email, String phone, LocalDateTime dealMadeTime, double askingAmount, double offeredAmount, String stage, Long employeeId) {
+    public DealInProcessDTO(Long dealId, String email, String phone, LocalDateTime dealMadeTime, double askingAmount, double offeredAmount, String stage, String employeeId) {
         this.dealId = dealId;
         this.email = email;
         this.phone = phone;
@@ -85,11 +85,11 @@ public class DealInProcessDTO {
         this.stage = stage;
     }
 
-    public Long getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Long employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 }

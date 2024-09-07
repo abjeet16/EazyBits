@@ -26,14 +26,14 @@ public class DealInProcess {
 
     private String stage;
 
-    @Column(name = "employee_id")
-    private Long employeeId;
+    private String employeeId;  // Replace with the actual Employee entity class
+
 
     // Constructors
     public DealInProcess() {
     }
 
-    public DealInProcess(Deal deal, String email, String phone, LocalDateTime dealMadeTime, double askingAmount, double offeredAmount, String stage, Long employeeId) {
+    public DealInProcess(Deal deal, String email, String phone, LocalDateTime dealMadeTime, double askingAmount, double offeredAmount, String stage, String employeeId) {
         this.deal = deal;
         this.email = email;
         this.phone = phone;
@@ -109,11 +109,11 @@ public class DealInProcess {
         this.stage = stage;
     }
 
-    public Long getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Long employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 }
