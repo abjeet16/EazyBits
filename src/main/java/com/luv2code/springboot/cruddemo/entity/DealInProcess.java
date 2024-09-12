@@ -12,20 +12,24 @@ public class DealInProcess {
     private Long dealInProcessId;  // This is the primary key
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "deal_id", referencedColumnName = "dealId", nullable = false)
+    @JoinColumn(name = "deal_id", nullable = false,unique = true)
     private Deal deal;  // Foreign key referencing the Deal table
 
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String phone;
 
     @Column(name = "deal_made_time", nullable = false)
     private LocalDateTime dealMadeTime;
 
+    @Column(nullable = false)
     private double askingAmount;
-    private double offeredAmount;
-
+    @Column(nullable = false)
+    private double offeredAmount = 0;
+    @Column(nullable = false)
     private String stage;
-
+    @Column(nullable = false)
     private String employeeId;  // Replace with the actual Employee entity class
 
 

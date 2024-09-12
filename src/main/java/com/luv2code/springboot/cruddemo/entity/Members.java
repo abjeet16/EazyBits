@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 public class Members {
 
     @Id
-    @Column(name = "user_id", length = 50, nullable = false)
+    @Column(name = "user_id", nullable = false)
     private String userId;
 
     @Column(name = "pw", length = 68, nullable = false)
@@ -19,18 +19,30 @@ public class Members {
     @Column(name = "active", nullable = false)
     private boolean active;
 
+    @Column(name = "email")
+    private String email;
+
     // Default constructor
     public Members() {
     }
 
     // Constructor with all fields
-    public Members(String userId, String pw, boolean active) {
+    public Members(String userId, String pw, boolean active, String email) {
         this.userId = userId;
         this.pw = pw;
         this.active = active;
+        this.email = email;
     }
 
     // Getters and setters
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getUserId() {
         return userId;
     }
